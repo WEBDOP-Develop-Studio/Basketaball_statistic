@@ -28,3 +28,7 @@ class UserRegistration(UserCreationForm): #forms.ModelForm
             raise ValidationError('имя пользователья не должно быть кароче 4 букв')
         return username
 
+
+class LoginUserForm(AuthenticationForm):
+    username = forms.CharField(label='login:', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))

@@ -24,7 +24,7 @@ def USER_SIGN_UP(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Вы успешно создали учетную запись")
-            return redirect('sign_up_url')
+            return redirect('sign_in_url')
             # user = form.save()
             # login(request, user)
             # return redirect('login')
@@ -36,7 +36,20 @@ def USER_SIGN_UP(request):
 
 
 def USER_SIGN_IN(request):
-    return render(request, template_name='SIGN_IN.html')
+    if request.method == 'POST':
+        form = LoginUserForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home_url')
+    else:
+        form = LoginUserForm()
+    return render(request, 'SIGN_IN.html', {'form': form})
+
+
+def USER_SIGN_OUT(request):
+    logout(request)
+    return redirect('home_url')
 
 
 def Home(request):
