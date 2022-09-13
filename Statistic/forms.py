@@ -1,13 +1,12 @@
 from django import forms
 from .models import *
-import re
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from captcha.fields import CaptchaField
 
 
-class UserRegistration(UserCreationForm): #forms.ModelForm
+class UserRegistration(UserCreationForm):  # forms.ModelForm
     username = forms.CharField(label='Логин:', widget=forms.TextInput())
     password1 = forms.CharField(label='Пароль:', widget=forms.PasswordInput())
     password2 = forms.CharField(label='Подтвердите пароль:',
@@ -16,7 +15,7 @@ class UserRegistration(UserCreationForm): #forms.ModelForm
     captcha = CaptchaField(label='Введите символы с картинки')
 
     class Meta:
-        model = User #Player
+        model = User  # Player
         fields = ['username', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
@@ -32,3 +31,9 @@ class UserRegistration(UserCreationForm): #forms.ModelForm
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='login:', widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'

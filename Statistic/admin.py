@@ -176,8 +176,13 @@ class ImagesAdmin(admin.ModelAdmin):
     get_photo.short_description = 'photo'
 
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']
+
+
 admin.site.register(Penalty_train_statistic, Penalty_train_statisticAdmin)
 admin.site.register(Steffen_carry_train_statistic, Steffen_carry_train_statisticAdmin)
 admin.site.register(Steffen_carry_train_pro_statistic, Steffen_carry_train_pro_statisticAdmin)
 admin.site.register(Images, ImagesAdmin)
+admin.site.register(Contact, ContactAdmin)
 # admin.site.register(Players, PlayersAdmin)

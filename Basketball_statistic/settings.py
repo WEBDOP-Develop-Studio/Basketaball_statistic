@@ -141,3 +141,10 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR),
     }
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'vitok1223@gmail.com'
+EMAIL_HOST_PASSWORD = 'pfdrplushipzbmlh'
+EMAIL_PORT = 587
+
