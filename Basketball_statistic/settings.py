@@ -82,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Basketball_statistic',
-        'USER': 'root',
-        'PASSWORD': 'Kombo-25',
+        'USER': 'WEBDOP',
+        'PASSWORD': 'WEBDOP12231980@0W3',
         'PORT': '3306',
         'HOST': 'localhost'
     }
