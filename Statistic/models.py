@@ -3,6 +3,16 @@ from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Sum
 from django.contrib.auth.models import User
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 class Penalty_train_statistic(models.Model):
     train_name = models.CharField(max_length=50, default='Penalty train', null=False)
     player = models.ForeignKey(User, on_delete=models.PROTECT, related_name='penalty')
@@ -110,7 +120,6 @@ class Images(models.Model):
         verbose_name_plural = 'Images'
         ordering = ['-created_at']
 
-
 # class Players(models.Model):
 #     username = models.CharField(max_length=20,  null=True)
 #     password1 = models.CharField(max_length=20, null=True)
@@ -128,4 +137,3 @@ class Images(models.Model):
 #     class Meta:
 #         verbose_name_plural = 'Players'
 #         ordering = ['-created_at']
-

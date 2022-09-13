@@ -1,5 +1,4 @@
 import instance as instance
-import pytz as pytz
 from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -10,12 +9,25 @@ from django.views.generic import ListView, CreateView, DetailView
 
 from .models import *
 from .forms import *
+from .service import *
 
 from django_delayed_union import DelayedUnionQuerySet
 from django_delayed_union import DelayedIntersectionQuerySet
 from django_delayed_union import DelayedDifferenceQuerySet
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class SEND_EMAIL(CreateView):
+    model = Contact
+    form_class = ContactForm
+    success_url = '/'
+    template_name = 'Send_email.html'
+
+    def form_valid(self, form):
+        form.save()
+        Send_email(form.instance.email,form.instance.name)
+        return super().form_valid(form)
 
 
 def USER_SIGN_UP(request):
