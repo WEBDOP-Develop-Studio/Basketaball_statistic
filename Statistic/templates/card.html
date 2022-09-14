@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block style %} <link rel="stylesheet" href="/tests/css/card.css"> {% endblock %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/card.css' %}"> {% endblock %}
 
 
 {% block content %}
@@ -9,6 +9,7 @@
     <div class="card__body">
         <div class="front">
             <div class="page">
+{#             <img src="/media/photos/NoDatabaseImages/sneakers.png" alt="">#}
             </div>
             <button class="desc">Подробнее</button>
         </div>
