@@ -16,6 +16,10 @@ from django_delayed_union import DelayedIntersectionQuerySet
 from django_delayed_union import DelayedDifferenceQuerySet
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .tasks import *
+
+def card(request):
+    return render(request, template_name='card.html')
 
 
 class SEND_EMAIL(CreateView):
@@ -26,7 +30,8 @@ class SEND_EMAIL(CreateView):
 
     def form_valid(self, form):
         form.save()
-        Send_email(form.instance.email,form.instance.name)
+        #Send_email(form.instance.email, form.instance.name)
+        send_email_task.delay(form.instance.email)
         return super().form_valid(form)
 
 
