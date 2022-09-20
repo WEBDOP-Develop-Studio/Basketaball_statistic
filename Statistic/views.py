@@ -16,7 +16,6 @@ from django_delayed_union import DelayedIntersectionQuerySet
 from django_delayed_union import DelayedDifferenceQuerySet
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .tasks import *
 
 def card(request):
     return render(request, template_name='card.html')
